@@ -1,8 +1,5 @@
 ---
-  - name: ping test for windows clients
-  hosts: all
-  become: false
-  gather_facts: false
+- hosts: all
   tasks:
-    - name: pingtest
-    win_ping:
+   - name: Ping Windows Hosts
+     win_ping:

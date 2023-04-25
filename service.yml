@@ -1,0 +1,12 @@
+---
+- hosts: win 
+
+  tasks: 
+
+   - name: Stop service bluetooth support service
+
+     win_service:
+
+       name: bthserv
+
+       state: stopped

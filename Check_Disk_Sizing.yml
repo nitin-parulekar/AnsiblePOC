@@ -1,6 +1,6 @@
 ---
-- hosts: all 
-  tasks: 
+- hosts: all
+  tasks:
   - name: Get disk facts
     win_disk_facts:
 
@@ -16,5 +16,15 @@
       disk: '{{ ansible_facts.disks|selectattr("system_disk")|first }}'
 
       # Show disk size in Gibibytes
-      disksize_gib_human: '{{ disk.size|filesizeformat(true) }}' 
+      disksize_gib_human: '{{ disk.size|filesizeformat(true) }}'
       disksize_gib: '{{ (disk.size/1024|pow(3))|round|int }} GiB'
+
+```yaml
+---
+- hosts: win
+  tasks:
+   - name: Get disk facts
+     win_command: wmic cpu get caption, deviceid, name, numberofcores, maxclockspeed, status
+     register: usage
+
+   - debug: msg="{{ usage.stdout }}"

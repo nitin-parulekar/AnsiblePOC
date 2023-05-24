@@ -1,0 +1,21 @@
+---
+
+- hosts: all 
+
+  tasks:
+
+   - name: Creating a registry
+
+     win_regedit:
+
+      path: HKLM:\SOFTWARE\AnsibleAWXPOC
+
+   - name: Modifying a registry, adding name and data
+
+     win_regedit:
+
+      path: HKLM:\SOFTWARE\AnsibleAWXPOC
+
+      name: AnsibleAWX
+
+      data: Rules
